@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Cron Job 1') {
+            steps {
+                script {
+                    // Run your first PowerShell cron job here
+                    powershell '''
+                    # Your PowerShell script for Cron Job 1
+                    # Example:
+                    Write-Host "Running Cron Job 1"
+                    # Add your job-specific commands here
+                    '''
+                }
+            }
+            post {
+                always {
+                    // Send an email notification for Cron Job 1
+                    emailext (
+                        subject: 'Cron Job 1 Completed',
+                        body: 'Cron Job 1 has finished successfully.',
+                        to: 'recipient1@example.com',
+                        attachLog: true
+                    )
+                }
+            }
+        }
+
+        stage('Cron Job 2') {
+            steps {
+                script {
+                    // Run your second PowerShell cron job here
+                    powershell '''
+                    # Your PowerShell script for Cron Job 2
+                    # Example:
+                    Write-Host "Running Cron Job 2"
+                    # Add your job-specific commands here
+                    '''
+                }
+            }
+            post {
+                always {
+                    // Send an email notification for Cron Job 2
+                    emailext (
+                        subject: 'Cron Job 2 Completed',
+                        body: 'Cron Job 2 has finished successfully.',
+                        to: 'recipient2@example.com',
+                        attachLog: true
+                    )
+                }
+            }
+        }
+
+        stage('Cron Job 3') {
+            steps {
+                script {
+                    // Run your third PowerShell cron job here
+                    powershell '''
+                    # Your PowerShell script for Cron Job 3
+                    # Example:
+                    Write-Host "Running Cron Job 3"
+                    # Add your job-specific commands here
+                    '''
+                }
+            }
+            post {
+                always {
+                    // Send an email notification for Cron Job 3
+                    emailext (
+                        subject: 'Cron Job 3 Completed',
+                        body: 'Cron Job 3 has finished successfully.',
+                        to: 'recipient3@example.com',
+                        attachLog: true
+                    )
+                }
+            }
+        }
+    }
+}
